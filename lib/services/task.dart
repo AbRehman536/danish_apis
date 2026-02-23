@@ -155,4 +155,30 @@ class TaskServices {
       throw e.toString();
     }
   }
+  ///Mark Task as Completed
+  Future<bool> markTaskAsCompleted({
+    required String token,
+    required String taskID,
+  }) async {
+    try {
+      final response = await http.patch(
+        Uri.parse('$baseURL/todos/complete/$taskID'),
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          "complete": true,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        throw response.body; // show backend error
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }
