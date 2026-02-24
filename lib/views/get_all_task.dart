@@ -1,8 +1,10 @@
 import 'package:danish_apis/models/taskListing.dart';
 import 'package:danish_apis/services/task.dart';
 import 'package:danish_apis/views/create_task.dart';
+import 'package:danish_apis/views/filter_task.dart';
 import 'package:danish_apis/views/get_completed_task.dart';
 import 'package:danish_apis/views/get_inCompleted_task.dart';
+import 'package:danish_apis/views/search_task.dart';
 import 'package:danish_apis/views/update_task.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +32,12 @@ class _GetAllTaskState extends State<GetAllTask> {
             IconButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=> GetInCompletedTask()));
             }, icon: Icon(Icons.incomplete_circle)),
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchTask()));
+            }, icon: Icon(Icons.search)),
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> FilterTask()));
+            }, icon: Icon(Icons.filter)),
           ],
         ),
       floatingActionButton: FloatingActionButton(onPressed: (){
